@@ -1430,7 +1430,7 @@ volumeBindingMode: Immediate</code></pre></div>
 
 <p>Within the PostgreSQL Operator, a <strong>node label</strong> is implemented as a <code>preferredDuringSchedulingIgnoredDuringExecution</code> node
 affinity rule, which is an affinity rule that Kubernetes will attempt to adhere to when scheduling any pods for the cluster,
-but <em>will not guarantee</em>. More information on node affinity rules can be found <a href="https://kubernetes.i/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity">here</a>).</p>
+but <em>will not guarantee</em>. More information on node affinity rules can be found <a href="https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity">here</a>).</p>
 
 <p>By using <code>Immediate</code> for the <code>volumeBindingMode</code> in a multi-zone cluster environment, the scheduler will ignore any requested
 <em>(but not mandatory)</em> scheduling requirements if necessary to ensure the pod can be scheduled. The scheduler will ultimately
