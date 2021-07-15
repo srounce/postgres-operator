@@ -1505,6 +1505,19 @@ To help ensure that needed resources are not inadvertently deleted during an upg
 
 <p>The automated upgrade process provides a mechanism where, instead of being deleted, the existing PostgreSQL clusters will be left in place during the PostgreSQL Operator upgrade. While normal Operator functionality will be restricted on these existing clusters until they are upgraded to the currently installed PostgreSQL Operator version, the pods, services, etc will still be in place and accessible via other methods (e.g. kubectl, service IP, etc).</p>
 
+<div class="notices warning" ><p>The automated upgrade process does not support upgrading clusters that have not been fully initialized (note that full cluster initialization includes successful pgBackRest stanza creation, as well as a successful initial backup). Therefore, ensure that the following status is set on your pgcluster before attempting the automated upgrade:</p>
+
+<pre><code>status:
+    message: Cluster has been initialized
+    state: pgcluster Initialized
+</code></pre>
+
+<p>You can check the status with the following command:</p>
+
+<pre><code>kubectl get pgcluster mycluster -o jsonpath='{ .status }'
+</code></pre>
+</div>
+
 <p>To upgrade a PostgreSQL cluster using the standard (<code>crunchy-postgres-ha</code>) image, you can run the following command:</p>
 
 <pre><code>pgo upgrade mycluster
