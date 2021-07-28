@@ -11,6 +11,18 @@
     
     
     <item>
+      <title>4.7.1</title>
+      <link>https://crunchydata.github.io/postgres-operator/stable/releases/4.7.1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/stable/releases/4.7.1/</guid>
+      <description>Crunchy Data announces the release of PGO, the Postgres Operator 4.7.1 on July 29, 2021.
+The PostgreSQL Operator is released in conjunction with the Crunchy Container Suite.
+PostgreSQL Operator 4.7.1 release includes the following software versions upgrades:
+ Patroni is now at 2.1.0.  Changes  On using the built-in upgrade tool, the pg-pod-anti-affinity is now removed from the userlabels section of a pgclusters.crunchydata.com custom resource. Ensure vendor label is propagated to all PGO managed objects.</description>
+    </item>
+    
+    <item>
       <title>4.7.0</title>
       <link>https://crunchydata.github.io/postgres-operator/stable/releases/4.7.0/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
