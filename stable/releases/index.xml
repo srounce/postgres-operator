@@ -11,6 +11,18 @@
     
     
     <item>
+      <title>4.7.2</title>
+      <link>https://crunchydata.github.io/postgres-operator/stable/releases/4.7.2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/stable/releases/4.7.2/</guid>
+      <description> Crunchy Data announces the release of PGO, the Postgres Operator 4.7.2 on August 17, 2021.
+The PostgreSQL Operator is released in conjunction with the Crunchy Container Suite.
+PostgreSQL Operator 4.7.2 release includes the following software versions upgrades:
+ PostgreSQL is updated to 13.4, 12.8, 11.13, 10.18, and 9.6.23. PL/Tcl is now included in the PostGIS (crunchy-postgres-gis-ha) container.  Changes  The nss_wrapper has been removed from the crunchy-postgres-exporter container.  </description>
+    </item>
+    
+    <item>
       <title>4.7.1</title>
       <link>https://crunchydata.github.io/postgres-operator/stable/releases/4.7.1/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
