@@ -19,7 +19,7 @@
       <description>Crunchy Data announces the release of PGO, the Postgres Operator 4.6.4.
 The PostgreSQL Operator is released in conjunction with the Crunchy Container Suite.
 PostgreSQL Operator 4.6.4 release includes the following software versions upgrades:
- PostgreSQL is updated to 13.4, 12.8, 11.13, 10.18, and 9.6.23. PL/Tcl is now included in the PostGIS (crunchy-postgres-gis-ha) container.  Changes  On using the built-in upgrade tool, the pg-pod-anti-affinity is now removed from the userlabels section of a pgclusters.</description>
+ PostgreSQL is updated to 13.4, 12.8, 11.13, 10.18, and 9.6.23. pgaudit_analyze is now at 1.0.8. set_user is now at version 2.0.1.  Changes  On using the built-in upgrade tool, the pg-pod-anti-affinity is now removed from the userlabels section of a pgclusters.</description>
     </item>
     
     <item>
