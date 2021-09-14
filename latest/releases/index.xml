@@ -11,6 +11,18 @@
     
     
     <item>
+      <title>4.7.3</title>
+      <link>https://crunchydata.github.io/postgres-operator/latest/releases/4.7.3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://crunchydata.github.io/postgres-operator/latest/releases/4.7.3/</guid>
+      <description>Crunchy Data announces the release of PGO, the Postgres Operator 4.7.3.
+The PostgreSQL Operator is released in conjunction with the Crunchy Container Suite.
+PostgreSQL Operator 4.7.3 release includes the following software versions upgrades:
+Changes  The Secret that is created when attempting a cluster bootstrap from a backup (pgo create cluster &amp;ndash;restore-from) is now removed when the pgo-rmdata Job is invoked (i.e. pgo delete cluster).  Fixes  The default container tag for deploying Postgres images did not contain the proper Postgres image increment.</description>
+    </item>
+    
+    <item>
       <title>4.7.2</title>
       <link>https://crunchydata.github.io/postgres-operator/latest/releases/4.7.2/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
