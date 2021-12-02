@@ -1462,6 +1462,7 @@
 <li>Ensure <code>pgo create cluster --pgbackrest-s3-ca-secret</code> overrides the CA used for pgBackRest.</li>
 <li>Update the <code>aws-s3-ca.crt</code> value to use the newer CAs provided by AWS. If a PostgreSQL cluster is using the old default CA, PGO will update the general one kept in the <code>pgo-backrest-repo-config</code> Secret and <code>pgo upgrade</code> will update it for a specific cluster.</li>
 <li>The <code>aws-s3-ca.crt</code> file in a pgBackRest Secret is now properly preserved when recreating a cluster that was previously deleted using the <code>--keep-backups</code> flag.</li>
+<li>Allow for the original primary instance to be scaled down after running <code>pgo upgrade</code>.</li>
 <li>Fix noise in logs due to an incorrect reference in a shell script when performing a reload operation on a PostgreSQL cluster.</li>
 </ul>
 
