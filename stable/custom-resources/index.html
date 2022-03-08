@@ -1138,6 +1138,13 @@
 
       </div>
         <ul>
+      <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.7.5/" class="dd-item">
+        <div>
+          <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.7.5/">
+            4.7.5
+          </a>
+        </div>
+    </li>
       <li data-nav-id="https://crunchydata.github.io/postgres-operator/stable/releases/4.7.4/" class="dd-item">
         <div>
           <a href="https://crunchydata.github.io/postgres-operator/stable/releases/4.7.4/">
@@ -1479,7 +1486,7 @@ metadata:
     deployment-name: ${pgo_cluster_name}
     name: ${pgo_cluster_name}
     pg-cluster: ${pgo_cluster_name}
-    pgo-version: 4.7.4
+    pgo-version: 4.7.5
     pgouser: admin
   name: ${pgo_cluster_name}
   namespace: ${cluster_namespace}
@@ -1511,7 +1518,7 @@ spec:
   annotations: {}
   ccpimage: crunchy-postgres-ha
   ccpimageprefix: registry.developers.crunchydata.com/crunchydata
-  ccpimagetag: centos8-13.5-4.7.4
+  ccpimagetag: centos8-13.6-4.7.5
   clustername: ${pgo_cluster_name}
   database: ${pgo_cluster_name}
   exporterport: &quot;9187&quot;
@@ -1530,7 +1537,7 @@ spec:
   tolerations: []
   user: hippo
   userlabels:
-    pgo-version: 4.7.4
+    pgo-version: 4.7.5
 EOF
 
 kubectl apply -f &quot;${pgo_cluster_name}-pgcluster.yaml&quot;
@@ -1692,7 +1699,7 @@ metadata:
     deployment-name: ${pgo_cluster_name}
     name: ${pgo_cluster_name}
     pg-cluster: ${pgo_cluster_name}
-    pgo-version: 4.7.4
+    pgo-version: 4.7.5
     pgouser: admin
   name: ${pgo_cluster_name}
   namespace: ${cluster_namespace}
@@ -1731,7 +1738,7 @@ spec:
   backrestS3VerifyTLS: &quot;&quot;
   ccpimage: crunchy-postgres-ha
   ccpimageprefix: registry.developers.crunchydata.com/crunchydata
-  ccpimagetag: centos8-13.5-4.7.4
+  ccpimagetag: centos8-13.6-4.7.5
   clustername: ${pgo_cluster_name}
   database: ${pgo_cluster_name}
   exporterport: &quot;9187&quot;
@@ -1750,7 +1757,7 @@ spec:
   tolerations: []
   user: hippo
   userlabels:
-    pgo-version: 4.7.4
+    pgo-version: 4.7.5
 EOF
 
 kubectl apply -f &quot;${pgo_cluster_name}-pgcluster.yaml&quot;
@@ -1811,7 +1818,7 @@ metadata:
     deployment-name: ${pgo_cluster_name}
     name: ${pgo_cluster_name}
     pg-cluster: ${pgo_cluster_name}
-    pgo-version: 4.7.4
+    pgo-version: 4.7.5
     pgouser: admin
   name: ${pgo_cluster_name}
   namespace: ${cluster_namespace}
@@ -1846,7 +1853,7 @@ spec:
   backrestGCSBucket: ${backrest_gcs_bucket}
   ccpimage: crunchy-postgres-ha
   ccpimageprefix: registry.developers.crunchydata.com/crunchydata
-  ccpimagetag: centos8-13.5-4.7.4
+  ccpimagetag: centos8-13.6-4.7.5
   clustername: ${pgo_cluster_name}
   database: ${pgo_cluster_name}
   exporterport: &quot;9187&quot;
@@ -1865,7 +1872,7 @@ spec:
   tolerations: []
   user: hippo
   userlabels:
-    pgo-version: 4.7.4
+    pgo-version: 4.7.5
 EOF
 
 kubectl apply -f &quot;${pgo_cluster_name}-pgcluster.yaml&quot;
@@ -1937,7 +1944,7 @@ metadata:
     deployment-name: ${pgo_cluster_name}
     name: ${pgo_cluster_name}
     pg-cluster: ${pgo_cluster_name}
-    pgo-version: 4.7.4
+    pgo-version: 4.7.5
     pgouser: admin
   name: ${pgo_cluster_name}
   namespace: ${cluster_namespace}
@@ -1969,7 +1976,7 @@ spec:
   annotations: {}
   ccpimage: crunchy-postgres-ha
   ccpimageprefix: registry.developers.crunchydata.com/crunchydata
-  ccpimagetag: centos8-13.5-4.7.4
+  ccpimagetag: centos8-13.6-4.7.5
   clustername: ${pgo_cluster_name}
   database: ${pgo_cluster_name}
   exporterport: &quot;9187&quot;
@@ -1991,7 +1998,7 @@ spec:
   tlsOnly: true
   user: hippo
   userlabels:
-    pgo-version: 4.7.4
+    pgo-version: 4.7.5
 EOF
 
 kubectl apply -f &quot;${pgo_cluster_name}-pgcluster.yaml&quot;
@@ -2082,7 +2089,7 @@ spec:
     supplementalgroups: &quot;&quot;
   tolerations: []
   userlabels:
-    pgo-version: 4.7.4
+    pgo-version: 4.7.5
 EOF
 
 kubectl apply -f &quot;${pgo_cluster_name}-${pgo_cluster_replica_suffix}-pgreplica.yaml&quot;
@@ -2470,7 +2477,7 @@ make changes, as described below.</p>
 <tr>
 <td>ccpimagetag</td>
 <td><code>create</code></td>
-<td>The tag of the PostgreSQL container image to use, e.g. <code>centos8-13.5-4.7.4</code>.</td>
+<td>The tag of the PostgreSQL container image to use, e.g. <code>centos8-13.6-4.7.5</code>.</td>
 </tr>
 
 <tr>
@@ -3066,7 +3073,7 @@ cluster. All of the attributes only affect the replica when it is created.</p>
 </div>
 
 <div class="text-center">
-  <p><small>&copy; 2017 - 2021 Crunchy Data Solutions, Inc.</small></p>
+  <p><small>&copy; 2017 - 2022 Crunchy Data Solutions, Inc.</small></p>
 </div>
 
 
