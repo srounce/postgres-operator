@@ -170,6 +170,9 @@ func fakePostgresCluster(clusterName, namespace, clusterUID string,
 		Incremental:  &testCronSchedule,
 	}
 
+	expectedConcurrencyPolicy := batchv1beta1.ForbidConcurrent
+	postgresCluster.Spec.Backups.PGBackRest.Repos[0].BackupConcurrencyPolicy = &expectedConcurrencyPolicy
+
 	return postgresCluster
 }
 
@@ -551,6 +554,18 @@ topologySpreadConstraints:
 		assert.Assert(t, backupScheduleFound(testrepo, "diff"))
 		assert.Assert(t, backupScheduleFound(testrepo, "incr"))
 
+	})
+
+	t.Run("verify pgbackrest concurrency policy found", func(t *testing.T) {
+		returnedCronJob := &batchv1beta1.CronJob{}
+		if err := tClient.Get(ctx, types.NamespacedName{
+			Name:      postgresCluster.Name + "-repo1-full",
+			Namespace: postgresCluster.GetNamespace(),
+		}, returnedCronJob); err != nil {
+			assert.NilError(t, err)
+		}
+
+		assert.Equal(t, returnedCronJob.Spec.ConcurrencyPolicy, batchv1beta1.ConcurrencyPolicy("Forbid"))
 	})
 
 	t.Run("verify pgbackrest schedule not found", func(t *testing.T) {

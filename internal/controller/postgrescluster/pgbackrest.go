@@ -103,6 +103,8 @@ const (
 	// to indicate that the restore Job can proceed because the cluster is now ready to be
 	// restored (i.e. it has been properly prepared for a restore).
 	ReasonReadyForRestore = "ReadyForRestore"
+
+	DefaultConcurrencyPolicy batchv1beta1.ConcurrencyPolicy = batchv1beta1.AllowConcurrent
 )
 
 // backup types
@@ -2754,25 +2756,31 @@ func (r *Reconciler) reconcileScheduledBackups(
 	for _, repo := range cluster.Spec.Backups.PGBackRest.Repos {
 		// if the repo level backup schedules block has not been created,
 		// there are no schedules defined
+
+		concurrencyPolicy := DefaultConcurrencyPolicy
+		if repo.BackupConcurrencyPolicy != nil {
+			concurrencyPolicy = *repo.BackupConcurrencyPolicy
+		}
+
 		if repo.BackupSchedules != nil {
 			// next if the repo level schedule is not nil, create the CronJob.
 			if repo.BackupSchedules.Full != nil {
 				if err := r.reconcilePGBackRestCronJob(ctx, cluster, repo,
-					full, repo.BackupSchedules.Full, sa, cronjobs); err != nil {
+					full, repo.BackupSchedules.Full, concurrencyPolicy, sa, cronjobs); err != nil {
 					log.Error(err, "unable to reconcile Full backup for "+repo.Name)
 					requeue = true
 				}
 			}
 			if repo.BackupSchedules.Differential != nil {
 				if err := r.reconcilePGBackRestCronJob(ctx, cluster, repo,
-					differential, repo.BackupSchedules.Differential, sa, cronjobs); err != nil {
+					differential, repo.BackupSchedules.Differential, concurrencyPolicy, sa, cronjobs); err != nil {
 					log.Error(err, "unable to reconcile Differential backup for "+repo.Name)
 					requeue = true
 				}
 			}
 			if repo.BackupSchedules.Incremental != nil {
 				if err := r.reconcilePGBackRestCronJob(ctx, cluster, repo,
-					incremental, repo.BackupSchedules.Incremental, sa, cronjobs); err != nil {
+					incremental, repo.BackupSchedules.Incremental, concurrencyPolicy, sa, cronjobs); err != nil {
 					log.Error(err, "unable to reconcile Incremental backup for "+repo.Name)
 					requeue = true
 				}
@@ -2788,8 +2796,8 @@ func (r *Reconciler) reconcileScheduledBackups(
 // backup type and schedule
 func (r *Reconciler) reconcilePGBackRestCronJob(
 	ctx context.Context, cluster *v1beta1.PostgresCluster, repo v1beta1.PGBackRestRepo,
-	backupType string, schedule *string, serviceAccount *corev1.ServiceAccount,
-	cronjobs []*batchv1beta1.CronJob,
+	backupType string, schedule *string, concurrencyPolicy batchv1beta1.ConcurrencyPolicy,
+	serviceAccount *corev1.ServiceAccount, cronjobs []*batchv1beta1.CronJob,
 ) error {
 
 	log := logging.FromContext(ctx).WithValues("reconcileResource", "repoCronJob")
@@ -2880,8 +2888,9 @@ func (r *Reconciler) reconcilePGBackRestCronJob(
 	pgBackRestCronJob := &batchv1beta1.CronJob{
 		ObjectMeta: objectmeta,
 		Spec: batchv1beta1.CronJobSpec{
-			Schedule: *schedule,
-			Suspend:  &suspend,
+			Schedule:          *schedule,
+			Suspend:           &suspend,
+			ConcurrencyPolicy: concurrencyPolicy,
 			JobTemplate: batchv1beta1.JobTemplateSpec{
 				ObjectMeta: metav1.ObjectMeta{
 					Annotations: annotations,

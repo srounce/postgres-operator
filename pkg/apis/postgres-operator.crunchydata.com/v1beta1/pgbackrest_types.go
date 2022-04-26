@@ -16,6 +16,7 @@
 package v1beta1
 
 import (
+	batchv1beta1 "k8s.io/api/batch/v1beta1"
 	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
@@ -306,6 +307,10 @@ type PGBackRestRepo struct {
 	// https://pgbackrest.org/user-guide.html#concept/backup
 	// +optional
 	BackupSchedules *PGBackRestBackupSchedules `json:"schedules,omitempty"`
+
+	// Defines the Concurrency Policy for scheduled backup jobs
+	// +optional
+	BackupConcurrencyPolicy *batchv1beta1.ConcurrencyPolicy `json:"concurrencyPolicy,omitempty"`
 
 	// Represents a pgBackRest repository that is created using Azure storage
 	// +optional
